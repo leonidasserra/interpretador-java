@@ -45,6 +45,16 @@ public class Parser {
             term();
             System.out.println("sub");
             oper();
+        } else if (currentToken.type == TokenType.TIMES) {
+            match(TokenType.TIMES);
+            term();
+            System.out.println("mult");
+            oper();
+        } else if (currentToken.type == TokenType.DIVIDE) {
+            match(TokenType.DIVIDE);
+            term();
+            System.out.println("divid");
+            oper();
         }
     }
 

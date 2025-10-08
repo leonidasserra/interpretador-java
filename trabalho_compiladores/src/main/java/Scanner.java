@@ -60,6 +60,14 @@ public class Scanner {
                 advance();
                 return new Token (TokenType.EQ,"=");
 
+            case '*':
+                advance();
+                return new Token (TokenType.TIMES,"*");
+
+            case '/':
+                advance();
+                return new Token (TokenType.DIVIDE,"/");
+
             case ';':
                 advance();
                 return new Token (TokenType.SEMICOLON,";");

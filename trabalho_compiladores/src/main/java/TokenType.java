@@ -1,5 +1,5 @@
 public enum TokenType {
-    PLUS,MINUS,
+    PLUS,MINUS,TIMES,DIVIDE,
     EQ,
     LET,
     PRINT,
