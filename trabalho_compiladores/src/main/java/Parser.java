@@ -56,6 +56,13 @@ public class Parser {
         }
     }
 
+    void printStatement () {
+        match(TokenType.PRINT);
+        expr();
+        System.out.println("print");
+        match(TokenType.SEMICOLON);
+    }
+
     void letStatement () {
         match(TokenType.LET);
         var id = currentToken.lexeme;
@@ -65,9 +72,23 @@ public class Parser {
         System.out.println("pop "+id);
         match(TokenType.SEMICOLON);
     }
-
-    public void parse () {
+    void statement () {
+        if (currentToken.type == TokenType.PRINT) {
+            printStatement();
+        } else if (currentToken.type == TokenType.LET) {
             letStatement();
+        } else {
+            throw new Error("syntax error");
+        }
+    }
+    void statements () {
+
+        while (currentToken.type != TokenType.EOF) {
+            statement();
+        }
+    }
+    public void parse() {
+        statements();
     }
 
 //    private char peek () {
